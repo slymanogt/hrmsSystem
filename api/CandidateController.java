@@ -9,30 +9,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.hrms.business.abstracts.TitleService;
+import com.example.hrms.business.abstracts.CandidateService;
 import com.example.hrms.core.utilities.result.DataResult;
 import com.example.hrms.core.utilities.result.Result;
-import com.example.hrms.entities.concretes.Title;
+import com.example.hrms.entities.concretes.Candidate;
 
 @RestController
-@RequestMapping("/api/job_titles")
-public class TitleController {
-
-	private TitleService titleService;
+@RequestMapping("/api/candidates")
+public class CandidateController {
+	
+	private CandidateService candidateService;
 
 	@Autowired
-	public TitleController(TitleService titleService) {
+	public CandidateController(CandidateService candidateService) {
 		super();
-		this.titleService = titleService;
+		this.candidateService = candidateService;
 	}
 	
 	@GetMapping("/getall")
-	public DataResult<List<Title>> getAll(){
-		return this.titleService.getAll();
+	public DataResult<List<Candidate>> getAll() {
+		return this.candidateService.getAll();
 	}
-	
+
 	@PostMapping("/add")
-	public Result add(@RequestBody Title title) {
-		return this.titleService.add(title);
+	public Result add(@RequestBody Candidate candidate) {
+		return this.candidateService.add(candidate);
 	}
 }

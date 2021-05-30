@@ -1,6 +1,7 @@
 package com.example.hrms.api;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,30 +10,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.hrms.business.abstracts.TitleService;
+import com.example.hrms.business.abstracts.UserService;
 import com.example.hrms.core.utilities.result.DataResult;
 import com.example.hrms.core.utilities.result.Result;
-import com.example.hrms.entities.concretes.Title;
+import com.example.hrms.entities.concretes.User;
 
 @RestController
-@RequestMapping("/api/job_titles")
-public class TitleController {
+@RequestMapping("/api/users")
+public class UserController {
 
-	private TitleService titleService;
+	private UserService userService;
 
 	@Autowired
-	public TitleController(TitleService titleService) {
+	public UserController(UserService userService) {
 		super();
-		this.titleService = titleService;
+		this.userService = userService;
 	}
 	
 	@GetMapping("/getall")
-	public DataResult<List<Title>> getAll(){
-		return this.titleService.getAll();
+	public DataResult<List<User>> getAll() {
+		return this.userService.getAll();
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody Title title) {
-		return this.titleService.add(title);
+	public Result add(@RequestBody User user) {
+		return this.userService.add(user);
 	}
+	
+	@GetMapping("/getbyid")
+    public DataResult<Optional<User>> getById(int userId){
+        return userService.getById(userId);
+    }
 }

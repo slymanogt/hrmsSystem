@@ -4,10 +4,9 @@ import java.util.List;
 
 import com.example.hrms.core.utilities.result.DataResult;
 import com.example.hrms.core.utilities.result.Result;
-import com.example.hrms.entities.concretes.Title;
+import com.example.hrms.entities.concretes.City;
 
-public interface TitleService {
-
-	DataResult<List<Title>> getAll();
-	Result add(Title title);
+public interface CityService {
+    DataResult<List<City>> getAll();
+    Result add(City city);
 }
